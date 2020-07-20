@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Golang Yelp API Demo</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <h1>Find a Restaurant Here</h1>
+
+    <form action="/search" method="GET">
+      <input
+        autofocus
+        id="search"
+        type="search"
+        name="q"
+        placeholder="Enter a search term..."
+      />
+      <input
+        autofocus
+        id="location"
+        type="search"
+        name="location"
+        placeholder="Enter your city..."
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    {{ range .Businesses }}
+    <div class="restaurantCard">
+      <img src="{{.ImageURL}}" />
+
+      <a href="{{ .URL }}" target="_blank">
+        <h3>{{ .Name }}</h3>
+        <p>Review Count: {{ .ReviewCount }}</p>
+        <p>Price: {{ .Price }}</p>
+      </a>
+    </div>
+
+    {{ end }}
+  </body>
+</html>
